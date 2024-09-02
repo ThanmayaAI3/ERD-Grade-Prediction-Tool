@@ -1,5 +1,5 @@
-train: C:/Users/td3pa/PycharmProjects/ERD-Grade-Prediction-Tool/dataset/images/train
-val: C:/Users/td3pa/PycharmProjects/ERD-Grade-Prediction-Tool/dataset/images/val
+train: C:/Users/td3pa/PycharmProjects/ERD-Grade-Prediction-Tool/dataset/images/train  # Change based on exact directory
+val: C:/Users/td3pa/PycharmProjects/ERD-Grade-Prediction-Tool/dataset/images/val      # Change based on exact directory
 
 nc: 7  # Number of classes
 names: ['entity', 'rel', 'rel_attr', 'many', 'one', 'weak_entity', 'ident_rel']  # Class names
