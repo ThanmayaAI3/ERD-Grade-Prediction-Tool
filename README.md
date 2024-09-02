@@ -1,6 +1,6 @@
 # ERD-Grade-Prediction-Tool
 1. Object Detection with YOLOv8
-Data Preparation: Convert the XML annotations to YOLO format, as we discussed earlier.
+Data Preparation: Convert the XML annotations to YOLO format, 
 Model Training: Train your YOLOv8 model using the prepared dataset.
 Inference: Use the trained model to detect ERD components in new images.
 2. Text Extraction with EasyOCR
