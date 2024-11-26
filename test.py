@@ -7,7 +7,7 @@ import cv2
 #Load trained model
 model = YOLO('runs/detect/train5/weights/best.pt')  # Path to best model
 
-image_path = 'dataset/images/val/113.png'
+image_path = 'OD_OCR_testing/OD_OCR_testing/video_games/8.png'
 
 #Perform inference on a new image
 results = model(image_path)
@@ -40,4 +40,6 @@ for i in coord[0]:
   if sub != []:
     final.append(sub)
   count += 1
-print(final)
+#print(final)
+for item in final:
+    print(item)
