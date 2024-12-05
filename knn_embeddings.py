@@ -53,8 +53,6 @@ for dataset in datasets:
     y_labeled = grades[labeled_mask]
     X_unlabeled = embeddings[~labeled_mask]
     unlabeled_indices = np.where(~labeled_mask)[0]
-    # print(X_unlabeled)
-    # print(unlabeled_indices)
     
     if len(X_labeled) > 0:
         X_train, X_val, y_train, y_val = train_test_split(X_labeled, y_labeled, test_size=0.2, random_state=42)
