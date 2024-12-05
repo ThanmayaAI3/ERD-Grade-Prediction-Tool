@@ -17,12 +17,14 @@ all_grades = {}
 for dataset in datasets:
     dataset_path = os.path.join(base_path, dataset)
     doc_texts = []
+    doc_names = []
     
     for i in range(1, 137):
         file_path = os.path.join(dataset_path, f"{i}.txt")
         try:
             with open(file_path, 'r', encoding='utf-8') as file:
                 doc_texts.append(file.read().strip())
+                doc_names.append(f"{i}")
         except FileNotFoundError:
             continue
 
@@ -41,7 +43,7 @@ for dataset in datasets:
 
     all_grades[dataset] = np.array(grades)
 
-predicted_grades = {"ERD_no": [], "dataset1_grade": [], "dataset2_grade": []}
+predicted_grades = {"ERD_No": [int(doc_names[i]) for i in range(101, len(doc_names))], "dataset1_grade": [], "dataset2_grade": []}
 
 for dataset in datasets:
     grades = all_grades[dataset]
@@ -51,6 +53,8 @@ for dataset in datasets:
     y_labeled = grades[labeled_mask]
     X_unlabeled = embeddings[~labeled_mask]
     unlabeled_indices = np.where(~labeled_mask)[0]
+    # print(X_unlabeled)
+    # print(unlabeled_indices)
     
     if len(X_labeled) > 0:
         X_train, X_val, y_train, y_val = train_test_split(X_labeled, y_labeled, test_size=0.2, random_state=42)
@@ -70,14 +74,8 @@ for dataset in datasets:
         y_unlabeled_pred = []
     
     col = f"{dataset.lower()}_grade"
-    for idx, pred in zip(unlabeled_indices, y_unlabeled_pred):
-        erd_no = idx + 1
-        if erd_no not in predicted_grades["ERD_no"]:
-            predicted_grades["ERD_no"].append(erd_no)
-            predicted_grades["dataset1_grade"].append(None)
-            predicted_grades["dataset2_grade"].append(None)
-        erd_pos = predicted_grades["ERD_no"].index(erd_no)
-        predicted_grades[col][erd_pos] = pred
+    for pred in y_unlabeled_pred:
+        predicted_grades[col].append(round(pred, 2))
         
 output_data = pd.DataFrame(predicted_grades)
 output_data.to_csv("ERD_grades.csv", index=False)
