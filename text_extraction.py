@@ -7,7 +7,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # Define paths
 input_folder = 'Collection 3 for stage 2/Collection 3/Dataset1'
 output_folder = 'Dataset1'
-model_path = 'runs/detect/train5/weights/best.pt'
+model_path = 'runs/detect/train5/weights/best.pt' # OCD model weights 
 
 # Ensure the output folder exists
 os.makedirs(output_folder, exist_ok=True)
@@ -65,4 +65,5 @@ with ThreadPoolExecutor() as executor:
     for future in as_completed(futures):
         print(f"Processed: {future.result()}")
 
-print(f"Processed images from '{input_folder}' and saved results to '{output_folder}'.")
+print(f"Processed images from '{input_folder}' and saved results to '{output_folder}'.") 
+# output_folder holds all text extractions that should be used in the next step
