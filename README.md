@@ -29,7 +29,7 @@ This project contains two Python scripts that form a pipeline for processing Ent
   - Uses a K-Nearest Neighbors (KNN) regressor to predict grades based on similarity to labeled diagrams.
   - Outputs predicted grades for unlabeled diagrams.
 - **Input:**
-  - A folder containing `.txt` files with extracted text.
+  - A folder with 2 Datasets cointaining `.txt` files with extracted text.
   - A `.csv` file (`ERD_grades.csv`) containing grades for labeled diagrams.
 - **Output:**
   - A `.csv` file with predicted grades for unlabeled diagrams.
