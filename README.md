@@ -22,7 +22,7 @@ This project contains two Python scripts that form a pipeline for processing Ent
   - Automatically skips processing images that already have corresponding `.txt` files in the output folder.
   - Uses threading to process multiple images concurrently for faster execution.
 
-### `knn_grading.py`
+### `knn_embeddings.py`
 - **Purpose:** Predicts grades for ERD diagrams based on extracted text features.
 - **Key Components:**
   - Converts the extracted text to embeddings using a pre-trained SentenceTransformer model.
@@ -37,27 +37,6 @@ This project contains two Python scripts that form a pipeline for processing Ent
   - Automatically skips diagrams already present in the grade predictions.
 
 ---
-
-## Input and Output Details
-
-### **Text Extraction (`text_extraction.py`)**
-- **Input:**
-  - Folder containing `.png` ERD diagram images.
-- **Output:**
-  - A folder containing `.txt` files with extracted text for each processed image.
-
-### **Grading (`knn_grading.py`)**
-- **Input:**
-  - Folder containing `.txt` files with extracted text.
-  - `ERD_grades.csv`: A tab-separated file with columns:
-    - `ERD_No`: Diagram ID.
-    - `dataset1_grade` and `dataset2_grade`: Grades for labeled diagrams.
-- **Output:**
-  - `ERD_grades.csv`: Updated file with predicted grades for previously unlabeled diagrams.
-
----
-
-## General Pipeline Details
 
 ### **Step 1: Text Extraction**
 1. ERD diagram images are processed using YOLO to detect regions of interest (e.g., entities, relationships, attributes).
